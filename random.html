@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS 数组随机打乱</title>
+	<script type="text/javascript">
+	function rand(arr){
+// 思路，随机生成下标，将下标对应的数组值放在新数组中
+		// 创建数组index，存储原数组下标
+		var index=new Array();
+		for (var i = 0; i < arr.length; i++) {
+			index[i]=i;
+		};
+		// 创建数组nums,存储随机生成的数组下标index
+		var nums=new Array();
+		for (var i = 0; i < arr.length; i++) {
+			// Math.floor()对一个数进行下取整，Math.ceil()上取整，Math.round()四舍五入取整
+			// Math.random()产生[0,1)之间的随机数，乘上10代表1-10之间的随机数
+			nums[i]=index.splice(Math.floor(Math.random()*index.length),1);
+		};
+		// 创建数组newArr，存储打乱顺序后的数组
+		var newArr=new Array();
+		for (var i = 0; i < arr.length; i++) {
+			newArr[i]=arr[nums[i]];
+		};
+		return newArr;
+	}
+	
+	var arr = [1,2,3,4,5,6,7,8,9,10];
+	for(var i=0;i<30;i++){
+
+		document.write(rand(arr)+"_____\n\n");
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
